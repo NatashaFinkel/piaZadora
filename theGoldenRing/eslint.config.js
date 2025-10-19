@@ -1,29 +1,61 @@
 import js from '@eslint/js'
-import globals from 'globals'
-import reactHooks from 'eslint-plugin-react-hooks'
-import reactRefresh from 'eslint-plugin-react-refresh'
-import { defineConfig, globalIgnores } from 'eslint/config'
+import react from 'eslint-plugin-react'
+import jsxA11y from 'eslint-plugin-jsx-a11y'
+import importPlugin from 'eslint-plugin-import'
+import vitestGlobals from 'eslint-plugin-vitest-globals'
 
-export default defineConfig([
-  globalIgnores(['dist']),
+export default [
+  js.configs.recommended,
   {
     files: ['**/*.{js,jsx}'],
-    extends: [
-      js.configs.recommended,
-      reactHooks.configs['recommended-latest'],
-      reactRefresh.configs.vite,
-    ],
+    plugins: {
+      react,
+      'jsx-a11y': jsxA11y,
+      import: importPlugin,
+      'vitest-globals': vitestGlobals,
+    },
     languageOptions: {
-      ecmaVersion: 2020,
-      globals: globals.browser,
+      globals: {
+        ...vitestGlobals.environments.env.globals, // 👈 test, expect, describe, etc.
+        browser: true,
+        es2020: true,
+      },
       parserOptions: {
         ecmaVersion: 'latest',
-        ecmaFeatures: { jsx: true },
         sourceType: 'module',
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
+    },
+    settings: {
+      react: {
+        version: 'detect',
       },
     },
     rules: {
-      'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
+      'no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
+      'no-console': 'off',
+
+      // ✅ Règles React
+      'react/react-in-jsx-scope': 'off',
+      'react/prop-types': 'off',
+      'react/jsx-uses-react': 'off',
+
+      // ✅ Accessibilité
+      'jsx-a11y/alt-text': 'warn',
+      'jsx-a11y/anchor-is-valid': 'warn',
+      'jsx-a11y/no-autofocus': 'warn',
+
+      // ✅ Imports
+      'import/order': [
+        'warn',
+        {
+          groups: [['builtin', 'external', 'internal']],
+          'newlines-between': 'always',
+        },
+      ],
+      'import/no-unresolved': 'off',
     },
   },
-])
+]
