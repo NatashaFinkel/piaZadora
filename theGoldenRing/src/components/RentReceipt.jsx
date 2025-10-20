@@ -4,8 +4,7 @@ export default function RentReceipt() {
       <h1>QUITTANCE DE LOYER</h1>
 
       <p className="periode">
-        Quittance de loyer du <span className="start-date"></span> au
-        <span className="end-date"></span>
+        Quittance de loyer du{" "}<span className="start-date"></span>{" "}au{" "}<span className="end-date"></span>
       </p>
 
       <div className="adresse">
@@ -17,15 +16,13 @@ export default function RentReceipt() {
       </div>
 
       <div className="contenu">
-        <p>
-          <span id="landlord-gender-undersigned"></span>
-          <strong id="landlord-name"></strong>, propriétaire du logement désigné
-          ci-dessus, déclare avoir reçu de <strong id="tenant-name"></strong> la
-          somme de <strong id="total-sum-in-words"></strong>
-          <strong className="total-sum-in-figures"></strong> au titre du paiement du
-          loyer et des charges pour la période de location du
-          <span className="start-date"></span> au <span className="end-date"></span> et
-          lui en donne quittance, sous réserve de tous mes droits.
+        <p>Je{" "}<span id="landlord-gender-undersigned"></span>
+          <strong id="landlord-name"></strong>,{" "}propriétaire du logement désigné
+          ci-dessus, déclare avoir reçu de{" "}<strong id="tenant-name"></strong>{" "}la
+          somme de{" "}<strong id="total-sum-in-words"></strong>
+          <strong className="total-sum-in-figures"></strong>{" "}au titre du
+          paiement du loyer et des charges pour la période de location du{" "}<span className="start-date"></span>{" "}au{" "}<span className="end-date"></span>{" "}et lui en donne quittance, sous
+          réserve de tous mes droits.
         </p>
       </div>
 
@@ -33,10 +30,10 @@ export default function RentReceipt() {
         <h2>Détail du règlement :</h2>
         <ul>
           <li>
-            Loyer : <span id="rent-only"></span>
+            Loyer :{" "}<span id="rent-only"></span>
           </li>
           <li>
-            Provision pour charges : <span id="rent-charges-only">€</span>
+            Provision pour charges :{" "}<span id="rent-charges-only">{" "}€</span>
           </li>
           <li>
             <strong>
