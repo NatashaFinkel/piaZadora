@@ -1,7 +1,9 @@
+import RentReceipt from "./components/RentReceipt";
+
 function App() {
   return (
     <>
-      <h1>The PiaZadora Project</h1>
+      <RentReceipt />
     </>
   );
 }
