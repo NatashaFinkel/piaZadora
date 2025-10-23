@@ -2,7 +2,7 @@ body {
   font-family: "Times New Roman", serif;
   background-color: #fff;
   color: #000000ff;
-  font-size: medium;
+  font-size: 19px;
 }
 
 .quittance-container {
@@ -17,8 +17,8 @@ h1 {
   text-transform: uppercase;
   font-size: 24px;
   margin-bottom: 30px;
-    padding: 10px;
-    background-color: #c6d9f1;
+  padding: 10px;
+  background-color: #c6d9f1;
 }
 
 .periode {
@@ -39,9 +39,9 @@ h1 {
 
 .details {
   margin-bottom: 25px;
-    border: 1px solid black;
-    width: fit-content;
-    padding: 0px 20px;
+  border: 1px solid black;
+  width: fit-content;
+  padding: 0px 20px;
 }
 
 .details h2 {
