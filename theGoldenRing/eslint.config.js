@@ -18,6 +18,7 @@ export default [
       globals: {
         ...vitestGlobals.environments.env.globals, // 👈 test, expect, describe, etc.
         browser: true,
+        fetch: true,
         es2020: true,
       },
       parserOptions: {
@@ -36,7 +37,7 @@ export default [
     },
     rules: {
       'no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
-      'no-console': 'off',
+      'no-console': 'on',
 
       // ✅ Règles React
       'react/react-in-jsx-scope': 'off',
