@@ -81,6 +81,10 @@ h1 {
   margin-bottom: 0px;
 }
 
+.details li {
+  font-weight: bold;
+}
+
 .details li,
 .address p {
   margin: 5px 0;
@@ -90,7 +94,7 @@ h1 {
 
 .details span {
   float: right;
-  font-weight: bold;
+  font-weight: normal;
 }
 
 .signature {

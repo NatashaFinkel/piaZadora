@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import CurrentMonth from "./CurrentMonth";
+import CurrentYear from "./CurrentYear";
 
 export default function RentReceipt({ appartId }) {
   const [startDate, setStartDate] = useState("");
@@ -16,6 +18,7 @@ export default function RentReceipt({ appartId }) {
   const [rentChargesOnly, setRentChargesOnly] = useState("");
   const [landlordCity, setLandlordCity] = useState("");
   let updatedStartDate;
+  let updatedEndDate;
 
   //TODO 1 :  manque la génération automatique du mois actuel et de l'année actuelle
 
@@ -55,10 +58,36 @@ export default function RentReceipt({ appartId }) {
     fetchAppartement();
   }, []);
 
-  if (startDate === 1) {
+  const updatedYear = CurrentYear();
+  const updatedMonth = CurrentMonth();
+
+  if (
+    startDate === 1 &&
+    (updatedMonth === "janvier" ||
+      updatedMonth === "mars" ||
+      updatedMonth === "mai" ||
+      updatedMonth === "juillet" ||
+      updatedMonth === "août" ||
+      updatedMonth === "octobre" ||
+      updatedMonth === "décembre")
+  ) {
     updatedStartDate = startDate + "er";
+    updatedEndDate = 31;
+  } else if (
+    startDate === 1 &&
+    (updatedMonth === "avril" ||
+      updatedMonth === "juin" ||
+      updatedMonth === "septembre" ||
+      updatedMonth === "novembre")
+  ) {
+    updatedStartDate = startDate + "er";
+    updatedEndDate = 30;
+  } else if (startDate === 1 && updatedMonth === "février") {
+    updatedStartDate = startDate + "er";
+    updatedEndDate = 28;
   } else {
     updatedStartDate = startDate;
+    updatedEndDate = endDate;
   }
 
   return (
@@ -69,8 +98,13 @@ export default function RentReceipt({ appartId }) {
 
       <p className="time-period">
         Quittance de loyer du{" "}
-        <span className="start-date">{updatedStartDate}</span> au{" "}
-        <span className="end-date">{endDate}</span>
+        <span className="start-date">
+          {updatedStartDate} {updatedMonth} {updatedYear}{" "}
+        </span>
+        au{" "}
+        <span className="end-date">
+          {updatedEndDate} {updatedMonth} {updatedYear}
+        </span>
       </p>
 
       <div className="bordered-container address">
@@ -89,15 +123,21 @@ export default function RentReceipt({ appartId }) {
           <span id="landlord-gender-undersigned">
             {landlordGenderUndersigned}
           </span>
-          <strong id="landlord-name"> {landlordName}</strong>, propriétaire du
+          <span id="landlord-name"> {landlordName}</span>, propriétaire du
           logement désigné ci-dessus, déclare avoir reçu de{" "}
-          <strong id="tenant-name">{tenantName}</strong> la somme de .....{" "}
-          <strong id="total-sum-in-words">{totalSumInWords}</strong> (
-          <strong className="total-sum-in-figures">{totalSumInFigures}</strong>€{" "}
-          ) ..... au titre du paiement du loyer et des charges pour la période
-          de location du <span className="start-date">{updatedStartDate}</span>{" "}
-          au <span className="end-date">{endDate}</span> et lui en donne
-          quittance, sous réserve de tous mes droits.
+          <span id="tenant-name">{tenantName}</span> la somme de .....{" "}
+          <span id="total-sum-in-words">{totalSumInWords}</span> (
+          <span className="total-sum-in-figures">{totalSumInFigures}</span>€ )
+          ..... au titre du paiement du loyer et des charges pour la période de
+          location du{" "}
+          <span className="start-date">
+            {updatedStartDate} {updatedMonth} {updatedYear}
+          </span>{" "}
+          au{" "}
+          <span className="end-date">
+            {updatedEndDate} {updatedMonth} {updatedYear}{" "}
+          </span>
+          et lui en donne quittance, sous réserve de tous mes droits.
         </p>
       </div>
 
@@ -105,29 +145,31 @@ export default function RentReceipt({ appartId }) {
         <h2>Détail du règlement :</h2>
         <ul>
           <li>
-            loyer : <span id="rent-only">{rentOnly} €</span>
+            Loyer : <span id="rent-only">{rentOnly} €</span>
           </li>
           <li>
-            provision pour charges :{" "}
+            Provision pour charges :{" "}
             <span id="rent-charges-only">{rentChargesOnly} €</span>
           </li>
           <li>
-            total du loyer :
-            <strong className="total-sum-in-figures">
-              {totalSumInFigures} €
-            </strong>
+            Total du loyer :
+            <span className="total-sum-in-figures">{totalSumInFigures} €</span>
           </li>
           <li>
-            date du paiement :{" "}
-            <span className="start-date"> {updatedStartDate}</span>{" "}
+            Date du paiement :
+            <span className="start-date">
+              {updatedStartDate} {updatedMonth} {updatedYear}
+            </span>
           </li>
         </ul>
       </div>
 
       <div className="signature">
         <p>
-          Fait à <span id="landlord-city">{landlordCity}</span>, le
-          <span className="start-date">{updatedStartDate}</span>.
+          Fait à <span id="landlord-city">{landlordCity}</span>, le{" "}
+          <span className="start-date">
+            {updatedStartDate} {updatedMonth} {updatedYear}
+          </span>
         </p>
       </div>
 
