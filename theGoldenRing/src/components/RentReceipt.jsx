@@ -56,7 +56,9 @@ export default function RentReceipt({ appartId }) {
 
   return (
     <div className="quittance-container" id={appartId}>
-      <h1>QUITTANCE DE LOYER</h1>
+      <header>
+        <h1>QUITTANCE DE LOYER</h1>
+      </header>
 
       <p className="time-period">
         Quittance de loyer du <span className="start-date">{startDate}</span> au{" "}
