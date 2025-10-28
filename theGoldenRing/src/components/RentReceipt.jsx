@@ -52,6 +52,8 @@ export default function RentReceipt({ appartId }) {
 
   //TODO: manque la génération automatique du mois actuel et de l'année actuelle
 
+  //TODO: manque la ville dans "adresse de la location"
+
   return (
     <div className="quittance-container" id={appartId}>
       <h1>QUITTANCE DE LOYER</h1>
