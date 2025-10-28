@@ -5,6 +5,7 @@ export default function RentReceipt({ appartId }) {
   const [endDate, setEndDate] = useState("");
   const [address, setAdress] = useState("");
   const [postcode, setPostcode] = useState("");
+  const [appartCity, setAppartCity] = useState("");
   const [landlordGenderUndersigned, setLandlordGenderUndersigned] =
     useState("");
   const [landlordName, setLandlordName] = useState("");
@@ -34,6 +35,7 @@ export default function RentReceipt({ appartId }) {
         setEndDate(data.end_date);
         setAdress(data.address);
         setPostcode(data.postcode);
+        setAppartCity(data.appart_city);
         setLandlordGenderUndersigned(data.landlord_gender_undersigned);
         setLandlordName(data.landlord_name);
         setTenantName(data.tenant_name);
@@ -52,8 +54,6 @@ export default function RentReceipt({ appartId }) {
 
   //TODO: manque la génération automatique du mois actuel et de l'année actuelle
 
-  //TODO: manque la ville dans "adresse de la location"
-
   return (
     <div className="quittance-container" id={appartId}>
       <header>
@@ -70,7 +70,9 @@ export default function RentReceipt({ appartId }) {
         <p id="address" className="appart-adress">
           {address}
         </p>
-        <p id="postcode">{postcode}</p>
+        <p id="postcode">
+          {postcode} {appartCity}
+        </p>
       </div>
 
       <div className="contenu">
