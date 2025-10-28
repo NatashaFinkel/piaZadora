@@ -1,19 +1,26 @@
+:root {
+  --main-color: #fff;
+  --secondary-color: #000000ff;
+  --main-margin: 60px 0px;
+  --center: center;
+}
+
 body {
   font-family: "Times New Roman", serif;
-  background-color: #fff;
-  color: #000000ff;
-  font-size: 19px;
+  background-color: var(--main-color);
+  color: var(--secondary-color);
+  font-size: 18px;
 }
 
 .quittance-container {
   max-width: 700px;
   padding: 40px;
   padding-top: 0px;
-  background-color: #fff;
+  background-color: var(--main-color);
 }
 
 h1 {
-  text-align: center;
+  text-align: var(--center);
   text-transform: uppercase;
   font-size: 24px;
   margin-bottom: 30px;
@@ -22,41 +29,63 @@ h1 {
 }
 
 .periode {
-  text-align: center;
+  text-align: var(--center);
   margin-bottom: 50px;
   font-style: italic;
-}
-
-.adresse {
-  margin-bottom: 50px;
 }
 
 .contenu {
   margin-bottom: 50px;
   line-height: 1.6;
-  text-align: justify;
+}
+
+.time-period {
+  justify-self: var(--center);
+}
+
+.bordered-container {
+  margin-bottom: 25px;
+  border: 1px solid --secondary-color;
+  width: fit-content;
+  padding: 0px 10px;
+  justify-self: var(--center);
+}
+
+.address {
+  width: fit-content;
+  justify-items: var(--center);
+  margin: var(--main-margin);
+}
+
+.adress p {
+  margin: 0px;
 }
 
 .details {
-  margin-bottom: 25px;
-  border: 1px solid black;
-  width: fit-content;
-  padding: 0px 20px;
+  width: 50%;
+  margin: var(--main-margin);
 }
 
-.details h2 {
+.bordered-container h2 {
   font-size: 18px;
   margin-bottom: 10px;
   text-decoration: underline;
+  margin-top: 5px;
+  justify-self: var(--center);
+  text-underline-position: from-font;
 }
 
 .details ul {
   list-style-type: none;
   padding: 0;
+  margin-bottom: 0px;
 }
 
-.details li {
+.details li,
+.address p {
   margin: 5px 0;
+  display: flex;
+  justify-content: space-between;
 }
 
 .details span {
@@ -65,14 +94,13 @@ h1 {
 }
 
 .signature {
-  margin-top: 40px;
+  margin-top: 80px;
   line-height: 1.6;
 }
 
 .note {
-  margin-top: 150px;
+  margin-top: 130px;
   font-size: 14px;
   color: #434040ff;
   font-style: italic;
-  text-align: justify;
 }

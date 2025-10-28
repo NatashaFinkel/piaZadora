@@ -65,10 +65,8 @@ export default function RentReceipt({ appartId }) {
         <span className="end-date">{endDate}</span>
       </p>
 
-      <div className="adresse">
-        <p>
-          <strong>Adresse de la location :</strong>
-        </p>
+      <div className="bordered-container address">
+        <h2>Adresse de la location :</h2>
         <p id="address" className="appart-adress">
           {address}
         </p>
@@ -84,38 +82,38 @@ export default function RentReceipt({ appartId }) {
           <strong id="landlord-name"> {landlordName}</strong>, propriétaire du
           logement désigné ci-dessus, déclare avoir reçu de{" "}
           <strong id="tenant-name">{tenantName}</strong> la somme de .....{" "}
-          <strong id="total-sum-in-words">{totalSumInWords}</strong>{" "}(
-          <strong className="total-sum-in-figures">
-            {totalSumInFigures}
-          </strong>€{" "})
-          ..... au titre du paiement du loyer et des charges pour la période de
-          location du <span className="start-date">{startDate}</span> au{" "}
+          <strong id="total-sum-in-words">{totalSumInWords}</strong> (
+          <strong className="total-sum-in-figures">{totalSumInFigures}</strong>€{" "}
+          ) ..... au titre du paiement du loyer et des charges pour la période
+          de location du <span className="start-date">{startDate}</span> au{" "}
           <span className="end-date">{endDate}</span> et lui en donne quittance,
           sous réserve de tous mes droits.
         </p>
       </div>
 
-      <div className="details">
+      <div className="bordered-container details">
         <h2>Détail du règlement :</h2>
         <ul>
           <li>
-            Loyer : <span id="rent-only">{rentOnly} €</span>
+            loyer : <span id="rent-only">{rentOnly} €</span>
           </li>
           <li>
-            Provision pour charges :{" "}
+            provision pour charges :{" "}
             <span id="rent-charges-only">{rentChargesOnly} €</span>
           </li>
           <li>
-            Total du loyer :
-            <strong className="total-sum-in-figures">{totalSumInFigures} {" "} €</strong>
+            total du loyer :
+            <strong className="total-sum-in-figures">
+              {totalSumInFigures} €
+            </strong>
+          </li>
+          <li>
+            date du paiement : <span className="start-date"> {startDate}</span>{" "}
           </li>
         </ul>
       </div>
 
       <div className="signature">
-        <p>
-          Date du paiement : <span className="start-date">{startDate}</span>
-        </p>
         <p>
           Fait à <span id="landlord-city">{landlordCity}</span>, le
           <span className="start-date">{startDate}</span>.
