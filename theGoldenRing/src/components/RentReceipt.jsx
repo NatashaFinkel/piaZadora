@@ -15,11 +15,14 @@ export default function RentReceipt({ appartId }) {
   const [rentOnly, setRentOnly] = useState("");
   const [rentChargesOnly, setRentChargesOnly] = useState("");
   const [landlordCity, setLandlordCity] = useState("");
+  let updatedStartDate;
 
-  //TODO: fonction qui génère appartId selon mes besoins
+  //TODO 1 :  manque la génération automatique du mois actuel et de l'année actuelle
+
+  //TODO 2 : fonction qui génère appartId selon mes besoins
 
   // en attendant la future fonction
-  appartId = "appartement-Flocon";
+  appartId = "appartement-Terrage";
 
   useEffect(() => {
     const fetchAppartement = async () => {
@@ -52,7 +55,11 @@ export default function RentReceipt({ appartId }) {
     fetchAppartement();
   }, []);
 
-  //TODO: manque la génération automatique du mois actuel et de l'année actuelle
+  if (startDate === 1) {
+    updatedStartDate = startDate + "er";
+  } else {
+    updatedStartDate = startDate;
+  }
 
   return (
     <div className="quittance-container" id={appartId}>
@@ -61,7 +68,8 @@ export default function RentReceipt({ appartId }) {
       </header>
 
       <p className="time-period">
-        Quittance de loyer du <span className="start-date">{startDate}</span> au{" "}
+        Quittance de loyer du{" "}
+        <span className="start-date">{updatedStartDate}</span> au{" "}
         <span className="end-date">{endDate}</span>
       </p>
 
@@ -87,9 +95,9 @@ export default function RentReceipt({ appartId }) {
           <strong id="total-sum-in-words">{totalSumInWords}</strong> (
           <strong className="total-sum-in-figures">{totalSumInFigures}</strong>€{" "}
           ) ..... au titre du paiement du loyer et des charges pour la période
-          de location du <span className="start-date">{startDate}</span> au{" "}
-          <span className="end-date">{endDate}</span> et lui en donne quittance,
-          sous réserve de tous mes droits.
+          de location du <span className="start-date">{updatedStartDate}</span>{" "}
+          au <span className="end-date">{endDate}</span> et lui en donne
+          quittance, sous réserve de tous mes droits.
         </p>
       </div>
 
@@ -110,7 +118,8 @@ export default function RentReceipt({ appartId }) {
             </strong>
           </li>
           <li>
-            date du paiement : <span className="start-date"> {startDate}</span>{" "}
+            date du paiement :{" "}
+            <span className="start-date"> {updatedStartDate}</span>{" "}
           </li>
         </ul>
       </div>
@@ -118,7 +127,7 @@ export default function RentReceipt({ appartId }) {
       <div className="signature">
         <p>
           Fait à <span id="landlord-city">{landlordCity}</span>, le
-          <span className="start-date">{startDate}</span>.
+          <span className="start-date">{updatedStartDate}</span>.
         </p>
       </div>
 
