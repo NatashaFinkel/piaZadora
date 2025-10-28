@@ -20,7 +20,7 @@ export default function RentReceipt({ appartId }) {
   let updatedStartDate;
   let updatedEndDate;
 
-  //TODO 1 :  manque la génération automatique du mois actuel et de l'année actuelle
+  //TODO 1 :  manque la génération automatique d'un mois au choix et de l'année au choix
 
   //TODO 2 : fonction qui génère appartId selon mes besoins
 
