@@ -45,7 +45,7 @@ h1 {
 
 .bordered-container {
   margin-bottom: 25px;
-  border: 1px solid --secondary-color;
+  border: 1px solid var(--secondary-color);
   width: fit-content;
   padding: 0px 10px;
   justify-self: var(--center);
